@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce</title>
+</head>
+<body>
+
+<h1>🛒 E-Commerce Store</h1>
+
+{% if session.get('user') %}
+Welcome, {{session['user']}} |
+<a href="/logout">Logout</a>
+{% else %}
+<a href="/login">Login</a>
+{% endif %}
+
+| <a href="/cart">Cart</a>
+
+<hr>
+
+{% for p in products %}
+<div style="border:1px solid black; padding:10px; margin:10px;">
+    <h3>{{p.name}}</h3>
+    <img src="{{ url_for('static', filename='images/' + p.image) }}" width="150">
+    <p>₹{{p.price}}</p>
+    <a href="/add_to_cart/{{p.id}}">Add to Cart</a>
+</div>
+{% endfor %}
+
+</body>
+</html>
+

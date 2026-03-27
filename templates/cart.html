@@ -1,0 +1,16 @@
+<h2>Your Cart</h2>
+
+{% for item in items %}
+<div>
+    <img src="{{ url_for('static', filename='images/' + item.image) }}" width="100">
+    {{item.name}} - ₹{{item.price}}
+    <a href="/remove_from_cart/{{item.id}}">❌ Remove</a>
+</div>
+{% endfor %}
+
+<h3>Total: ₹{{total}}</h3>
+
+<br>
+<a href="/clear_cart">🗑 Clear Cart</a>
+<br><br>
+<a href="/">⬅ Back to Home</a>
